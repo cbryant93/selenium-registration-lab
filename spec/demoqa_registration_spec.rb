@@ -23,26 +23,47 @@ describe 'testing the demoqa registration page' do
 
     it 'should accept a last name' do
       if  @driver.last_name_field_displayed
-        @driver.set_last_name_field('Bryant')
-        expect(@driver.get_last_name_field_value).to eq 'Bryant'
+          @driver.set_last_name_field('Bryant')
+          expect(@driver.get_last_name_field_value).to eq 'Bryant'
       end
     end
 
     it 'should accept a marital status selection of Single, Married, or Divorced' do
       if  @driver.marital_option_displayed('single')
-        @driver.select_marital_option('single')
-        expect(@driver.get_marital_option('single')).to eq 'single'
+          @driver.select_marital_option('single')
+          expect(@driver.get_marital_option('single')).to eq 'single'
       end
-    end
+
+      if  @driver.marital_option_displayed('married')
+          @driver.select_marital_option('married')
+          expect(@driver.get_marital_option('married')).to eq 'married'
+      end
+
+      if  @driver.marital_option_displayed('divorced')
+          @driver.select_marital_option('divorced')
+          expect(@driver.get_marital_option('divorced')).to eq 'divorced'
+      end
+     end
 
     it 'should accept a hobby status selection of Dance, Reading, or Cricket' do
-      if  @driver.marital_option_displayed('single')
-        @driver.select_marital_option('single')
-        expect(@driver.get_marital_option('single')).to eq 'single'
+      if  @driver.hobby_option_displayed('dance')
+          @driver.select_hobby_option('dance')
+          expect(@driver.get_hobby_option('dance')).to eq 'dance'
+      end
+
+      if  @driver.hobby_option_displayed('reading')
+          @driver.select_hobby_option('reading')
+          expect(@driver.get_hobby_option('reading')).to eq 'reading'
+      end
+
+      if  @driver.hobby_option_displayed('cricket ')
+          @driver.select_hobby_option('cricket ')
+          expect(@driver.get_hobby_option('cricket ')).to eq 'cricket '
       end
     end
 
-    it 'should have a country default of Afhghanistan' do
+    it 'should have a country default of Afghanistan' do
+        expect(@driver.get_selected_country).to eq 'Afghanistan'
     end
 
     it 'accept a new DOB' do

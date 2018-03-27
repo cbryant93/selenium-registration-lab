@@ -9,10 +9,10 @@ class SeleniumDemoReg
   LAST_NAME_FIELD = 'name_3_lastname'
   MARITAL_STATUS =  # id
   HOBBY_STATUS =  # values
-  COUNTRY_DROP_DOWN_LIST =  # id
-  DOB_MONTH_DROPDOWN_LIST =  # id
-  DOB_DAY_DROPDOWN_LIST =  # id
-  DOB_YEAR_DROPDOWN_LIST =  # id
+  COUNTRY_DROP_DOWN_LIST =  'dropdown_7'
+  DOB_MONTH_DROPDOWN_LIST = 'mm_date_8'
+  DOB_DAY_DROPDOWN_LIST =  'dd_date_8'
+  DOB_YEAR_DROPDOWN_LIST =  'yy_date_8'
   PHONE_NUMBER_FIELDS =  "phone_9"
   USERNAME_FIELD =  "username"
   EMAIL_FIELD =  "email_1"
@@ -76,7 +76,7 @@ class SeleniumDemoReg
         when 'divorced'
           @chrome_driver.find_element(:xpath, "//li[2]/div/div/input[3]").click
       end
-    end
+   end
 
     def get_marital_option(marital_status)
       case marital_status
@@ -97,22 +97,41 @@ class SeleniumDemoReg
           @chrome_driver.find_element(:xpath, "//li[2]/div/div/input[2]").displayed?
         when 'divorced'
           @chrome_driver.find_element(:xpath, "//li[2]/div/div/input[3]").displayed?
-      end
+        end
     end
 
   # hobby option management - Difficulty Medium
     def select_hobby_option(hobby)
     # Consider something like a case statement and check the selenium selected? method //li[3]/div/div[1]/input[2]
     case hobby
-      when "dance"
-        @chrome_driver.find_element(:xpath,"//li[3]/div/div[1]/input[1]").click
-        @chrome_driver.find_element(:xpath,"//li[3]/div/div[1]/input[1]")["value"]
-      when "reading"
-        @chrome_driver.find_element(:xpath,"//li[3]/div/div[1]/input[2]").click
-        @chrome_driver.find_element(:xpath,"//li[3]/div/div[1]/input[2]")["value"]
-      when "cricket "
-        @chrome_driver.find_element(:xpath,"//li[3]/div/div[1]/input[3]").click
-        @chrome_driver.find_element(:xpath,"//li[3]/div/div[1]/input[3]")["value"]
+        when "dance"
+          @chrome_driver.find_element(:xpath,"//li[3]/div/div[1]/input[1]").click
+        when "reading"
+          @chrome_driver.find_element(:xpath,"//li[3]/div/div[1]/input[2]").click
+        when "cricket "
+          @chrome_driver.find_element(:xpath,"//li[3]/div/div[1]/input[3]").click
+        end
+    end
+
+    def get_hobby_option(hobby)
+      case hobby
+        when 'dance'
+          @chrome_driver.find_element(:xpath,"//li[3]/div/div[1]/input[1]")["value"]
+        when 'reading'
+          @chrome_driver.find_element(:xpath,"//li[3]/div/div[1]/input[2]")["value"]
+        when 'cricket '
+          @chrome_driver.find_element(:xpath,"//li[3]/div/div[1]/input[3]")["value"]
+      end
+    end
+
+    def hobby_option_displayed(hobby)
+      case hobby
+        when 'dance'
+          @chrome_driver.find_element(:xpath, "//li[3]/div/div[1]/input[1]").displayed?
+        when 'reading'
+          @chrome_driver.find_element(:xpath, "//li[3]/div/div[1]/input[2]").displayed?
+        when 'cricket '
+          @chrome_driver.find_element(:xpath, "//li[3]/div/div[1]/input[3]").displayed?
       end
     end
 
@@ -124,9 +143,17 @@ class SeleniumDemoReg
   # If no solution then a run through will happen once finished
 
   def get_selected_country
+    @chrome_driver.find_element(:id, COUNTRY_DROP_DOWN_LIST)["value"]
   end
 
   def country_dropdown_list_select(country)
+     select = @chrome_driver.find_element(:id, COUNTRY_DROP_DOWN_LIST)
+     all_options = select.find_elements(:tag_name, "option")
+     all_options.each do |option|
+     if option["value"] == country
+       option.click
+     end
+   end
   end
 
   # DOB management - Difficulty HARD
@@ -136,17 +163,34 @@ class SeleniumDemoReg
   # If no solution then a run through will happen once finished
 
   def dob_month_list_select(month_value)
-
+      select = @chrome_driver.find_element(:id, DOB_MONTH_DROPDOWN_LIST)
+      all_options = select.find_elements(:tag_name, "option")
+      all_options.each do |option|
+        if option["value"] == month_value
+          option.click
+        end
+    end
   end
 
   def dob_day_list_select(day_value)
-
+      select = @chrome_driver.find_element(:id, DOB_DAY_DROPDOWN_LIST)
+      all_options = select.find_elements(:tag_name, "option")
+      all_options.each do |option|
+        if option["value"] == day_value
+          option.click
+        end
+    end
   end
 
   def dob_year_list_select(year_value)
-
+    select = @chrome_driver.find_element(:id, DOB_YEAR_DROPDOWN_LIST)
+    all_options = select.find_elements(:tag_name, "option")
+    all_options.each do |option|
+      if option["value"] == year_value
+        option.click
+      end
   end
-
+end
 
   # Phone number field management - Difficulty Easy
 
@@ -248,12 +292,19 @@ x.set_first_name_field('Christian')
 x.set_last_name_field('Bryant')
 x.select_marital_option('single')
 x.select_hobby_option('cricket ')
+x.country_dropdown_list_select('Afghanistan')
+x.get_selected_country
+x.dob_month_list_select("1")
+x.dob_day_list_select("1")
+x.dob_year_list_select("2001")
 x.set_phone_number_field('077229302832')
 x.set_user_name_field('test1')
 x.set_email_field('cbryant@spartaglobal.com')
 x.set_about_yourself_field('Hello my name is Christian')
 x.set_password_field('6Y7H8YU!')
 x.set_confirmation_password_field('6Y7H8YU!')
+
+
 
 
 sleep 10

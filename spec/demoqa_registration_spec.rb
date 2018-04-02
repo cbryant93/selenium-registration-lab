@@ -70,7 +70,9 @@ describe 'testing the demoqa registration page' do
         @driver.dob_day_list_select('1')
         @driver.dob_month_list_select('1')
         @driver.dob_year_list_select('2000')
-        expect("#{@diver.get}".)
+        expect(@driver.get_dob_day_list_value).to eq("1")
+        expect(@driver.get_dob_month_list_value).to eq("1")
+        expect(@driver.get_dob_year_list_value).to eq("2000")
     end
 
     it 'should accept a new country value' do

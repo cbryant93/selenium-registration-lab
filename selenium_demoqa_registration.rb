@@ -172,6 +172,10 @@ class SeleniumDemoReg
       end
   end
 
+  def get_dob_month_list_value
+    @chrome_driver.find_element(:id, DOB_MONTH_DROPDOWN_LIST)['value']
+  end
+
   def dob_day_list_select(day_value)
       select = @chrome_driver.find_element(:id, DOB_DAY_DROPDOWN_LIST)
       all_options = select.find_elements(:tag_name, "option")
@@ -182,6 +186,10 @@ class SeleniumDemoReg
       end
   end
 
+  def get_dob_day_list_value
+    @chrome_driver.find_element(:id, DOB_DAY_DROPDOWN_LIST)['value']
+  end
+
   def dob_year_list_select(year_value)
     select = @chrome_driver.find_element(:id, DOB_YEAR_DROPDOWN_LIST)
     all_options = select.find_elements(:tag_name, "option")
@@ -190,7 +198,11 @@ class SeleniumDemoReg
         option.click
       end
     end
-end
+  end
+
+  def get_dob_year_list_value
+    @chrome_driver.find_element(:id, DOB_YEAR_DROPDOWN_LIST)['value']
+  end
 
   # Phone number field management - Difficulty Easy
 
@@ -297,6 +309,9 @@ x.get_selected_country
 x.dob_month_list_select("1")
 x.dob_day_list_select("1")
 x.dob_year_list_select("2001")
+x.get_dob_day_list_value
+x.get_dob_month_list_value
+x.get_dob_year_list_value
 x.set_phone_number_field('077229302832')
 x.set_user_name_field('test1')
 x.set_email_field('cbryant@spartaglobal.com')

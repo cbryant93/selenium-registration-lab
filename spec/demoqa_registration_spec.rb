@@ -15,8 +15,8 @@ describe 'testing the demoqa registration page' do
 
     it 'should accept a first name' do
       if  @driver.first_name_field_displayed
-        @driver.set_first_name_field('Christian')
-        expect(@driver.get_first_name_field_value).to eq 'Christian'
+          @driver.set_first_name_field('Christian')
+          expect(@driver.get_first_name_field_value).to eq 'Christian'
       end
 
     end
@@ -43,7 +43,7 @@ describe 'testing the demoqa registration page' do
           @driver.select_marital_option('divorced')
           expect(@driver.get_marital_option('divorced')).to eq 'divorced'
       end
-     end
+    end
 
     it 'should accept a hobby status selection of Dance, Reading, or Cricket' do
       if  @driver.hobby_option_displayed('dance')
@@ -67,10 +67,10 @@ describe 'testing the demoqa registration page' do
     end
 
     it 'accept a new DOB' do
-      @driver.dob_day_list_select('1')
-      @driver.dob_month_list_select('1')
-      @driver.dob_year_list_select('2000')
-      expect("#{@diver.get}")
+        @driver.dob_day_list_select('1')
+        @driver.dob_month_list_select('1')
+        @driver.dob_year_list_select('2000')
+        expect("#{@diver.get}".)
     end
 
     it 'should accept a new country value' do
@@ -79,38 +79,38 @@ describe 'testing the demoqa registration page' do
 
     it 'should accept a valid phone number' do
       if  @driver.phone_number_field_displayed
-        @driver.set_phone_number_field('077229302832')
-        expect(@driver.get_phone_number_field_value).to eq '077229302832'
+          @driver.set_phone_number_field('077229302832')
+          expect(@driver.get_phone_number_field_value).to eq '077229302832'
       end
 
     end
 
     it 'should accept a username' do
       if  @driver.user_name_field_displayed
-        @driver.set_user_name_field('test1')
-        expect(@driver.get_user_name_field_value).to eq 'test1'
+          @driver.set_user_name_field('test1')
+          expect(@driver.get_user_name_field_value).to eq 'test1'
       end
     end
 
     it 'should accept a about yourself text' do
       if  @driver.about_yourself_displayed
-        @driver.set_about_yourself_field('Hello my name is Christian')
-        expect(@driver.get_about_yourself_value).to eq 'Hello my name is Christian'
+          @driver.set_about_yourself_field('Hello my name is Christian')
+          expect(@driver.get_about_yourself_value).to eq 'Hello my name is Christian'
       end
 
     end
 
     it 'should accept a password' do
       if  @driver.password_displayed
-        @driver.set_password_field('6Y7H8YU!')
-        expect(@driver.get_password_value).to eq '6Y7H8YU!'
+          @driver.set_password_field('6Y7H8YU!')
+          expect(@driver.get_password_value).to eq '6Y7H8YU!'
       end
     end
 
     it 'should accept a password confirmation' do
       if  @driver.confirmation_password_displayed
-        @driver.set_confirmation_password_field('6Y7H8YU!')
-        expect(@driver.get_confirmation_password_value).to eq '6Y7H8YU!'
+          @driver.set_confirmation_password_field('6Y7H8YU!')
+          expect(@driver.get_confirmation_password_value).to eq '6Y7H8YU!'
       end
     end
 

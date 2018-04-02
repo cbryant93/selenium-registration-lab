@@ -169,7 +169,7 @@ class SeleniumDemoReg
         if option["value"] == month_value
           option.click
         end
-    end
+      end
   end
 
   def dob_day_list_select(day_value)
@@ -179,7 +179,7 @@ class SeleniumDemoReg
         if option["value"] == day_value
           option.click
         end
-    end
+      end
   end
 
   def dob_year_list_select(year_value)
@@ -189,7 +189,7 @@ class SeleniumDemoReg
       if option["value"] == year_value
         option.click
       end
-  end
+    end
 end
 
   # Phone number field management - Difficulty Easy
